@@ -7,7 +7,7 @@ const resultsPage = document.getElementById('results')
 const creditPage = document.getElementById('credits')
 
 const startButton = document.getElementById('start')
-const retryButton = document.getElementById('redo')
+const retryButton = document.getElementsByClassName('redo')
 const creditButton = document.getElementById('view-results')
 
 startButton.addEventListener('click', function () {
@@ -19,19 +19,21 @@ startButton.addEventListener('click', function () {
     getQuestion()
 })
 
-retryButton.addEventListener('click', function () {
-    // reset memory
-    actualAnswers = []
-    userAnswers = []
+for (let btn of retryButton) {
+    btn.addEventListener('click', function () {
+        // reset memory
+        actualAnswers = []
+        userAnswers = []
 
-    // start again
-    resultsPage.style.display = 'none'
-    gamePage.style.display = 'flex'
+        // start again
+        resultsPage.style.display = 'none'
+        creditPage.style.display = 'none'
+        gamePage.style.display = 'flex'
 
-    // render question
-    getQuestion()
-})
-
+        // render question
+        getQuestion()
+    })
+}
 creditButton.addEventListener('click', function () {
     resultsPage.style.display = 'none'
     creditPage.style.display = 'flex'
