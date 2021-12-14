@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Game</title>
+
+    <!-- external fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+
+    <!-- local stylesheets -->
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <!-- handlebars script cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <!-- local scripts -->
+    <script src="./calculation.js" type="module" defer></script>
+    <script src="./main.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li id="time">00:00</li>
+            <li><span id="correct-counter">0</span> / 20</li>
+        </ul>
+    </header>
+    <main>
+        <section id="intro">
+            <h1>quick maths</h1>
+            <p>how quickly can you answer 20 basic math questions correctly?</p>
+            <input type="button" id="start" class="btn" value="try now" />
+        </section>
+
+        <section id="game">
+            <p>Question <span class="question-number"></span></p>
+            <h1 id="question"></h1>
+            <input type="number" name="answer" id="answer" placeholder="Answer Here..." />
+            <p>press enter to submit</p>
+        </section>
+        <section id="results">
+            <h1>errors</h1>
+            <p id="error-counter">5</p>
+            <input type="button" value="view results" class="btn" id="view-results">
+            <br>
+            <h1>final time</h1>
+            <p id="time-stamp">00:02:22</p>
+            <input type="button" id="redo" value="try again" class="btn">
+        </section>
+        <section id="credits">
+
+        </section>
+    </main>
+</body>
+
+</html>

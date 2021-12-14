@@ -1,0 +1,132 @@
+/* global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fff;
+    --black: #000;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Cabin', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+/* header */
+header {
+    visibility: hidden;
+}
+
+header > ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* main */
+main {
+    position: relative;
+    min-height: 90vh;
+}
+
+section {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#intro {
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+#intro p {
+    margin: 20px 0 30px;
+}
+
+input {
+    border: 2px solid var(--black);
+    background-color: var(--white);
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+/* remove counter from number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+/* game */
+
+section#game {
+    display: none;
+}
+
+#question {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 20px 0;
+}
+
+#answer {
+    text-align: center;
+}
+
+#answer::placeholder {
+    text-align: center;
+}
+
+/* results */
+
+section#results {
+    display: none;
+}
+
+/* credits */
+
+section#credits {
+    display: none;
+    text-align: center;
+    position: static;
+    transform: translate(0, 0);
+}
+
+#credits > .correction {
+    color: red;
+}
+
+#credits > div {
+    margin-bottom: 30px;
+}
+
+#credits p {
+    margin: 10px 0;
+}
