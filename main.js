@@ -21,19 +21,13 @@ startButton.addEventListener('click', function () {
 
 for (let btn of retryButton) {
     btn.addEventListener('click', function () {
-        // reset memory
-        actualAnswers = []
-        userAnswers = []
-
-        // start again
-        resultsPage.style.display = 'none'
-        creditPage.style.display = 'none'
-        gamePage.style.display = 'flex'
+        reset()
 
         // render question
         getQuestion()
     })
 }
+
 creditButton.addEventListener('click', function () {
     resultsPage.style.display = 'none'
     creditPage.style.display = 'flex'
@@ -51,18 +45,21 @@ let userAnswers = [];
 // make sure the user makes an input before proceeding to next question
 document.body.addEventListener('keydown', function (e) {
     if (e.key == 'Enter' && answer.value) {
-        if (userAnswers.length < 25) {
+
+        if (compareAnswers() < 20) {
             // store user's answers
             userAnswers.push(Number(answer.value))
             console.log(userAnswers)
             // update amount of correct answers
             correctCounter.innerHTML = compareAnswers()
-            if (actualAnswers.length < 25)
+
+            // check again since you just added another value above
+            if (compareAnswers() < 20)
                 getQuestion()
         }
     }
     // end the game once user has finished
-    if (actualAnswers.length == 25 && e.key == 'Enter' && actualAnswers.length == 25 && userAnswers.length == 25) {
+    if (e.key == 'Enter' && compareAnswers() == 20) {
         showResults()
     }
 })
@@ -108,11 +105,29 @@ function showResults() {
 }
 
 function showCredits() {
+    // create all credits for each question
     for (let i = 0; i < actualAnswers.length; i++) {
         if (userAnswers[i] == actualAnswers[i][3]) {
             addCredit(userAnswers[i], i, true)
         } else addCredit(userAnswers[i], i, false)
     }
+}
+
+function reset() {
+    // reset memory
+    actualAnswers = []
+    userAnswers = []
+    correctCounter.innerHTML = compareAnswers()
+    header.style.visibility = 'visible'
+
+    // go back to game page
+    introPage.style.display = 'none'
+    resultsPage.style.display = 'none'
+    creditPage.style.display = 'none'
+    gamePage.style.display = 'flex'
+
+    // delete artificially-added elements
+    removeCredits()
 }
 
 function addCredit(arr, index, correct) {
@@ -142,4 +157,14 @@ function addCredit(arr, index, correct) {
     }
 
     creditPage.appendChild(newDiv)
+}
+
+function removeCredits() {
+    let divs = document.querySelectorAll('#credits > div');
+    for (let i = 0; i < divs.length; i++) {
+        // make sure you don't delete the retry button UI
+        if (divs[i].nodeName.toLowerCase() === 'div')
+            // delete the div
+            divs[i].remove()
+    }
 }
