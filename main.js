@@ -50,7 +50,6 @@ document.body.addEventListener("keydown", function (e) {
 		if (compareAnswers() < 20) {
 			// store user's answers
 			userAnswers.push(Number(answer.value));
-			console.log(userAnswers);
 			// update amount of correct answers
 			correctCounter.innerHTML = compareAnswers();
 
@@ -79,7 +78,6 @@ function getQuestion() {
 
 	// add the real answer to the list of correct answers
 	actualAnswers.push(questionArray);
-	console.log(actualAnswers);
 	updateQuestionNumber();
 }
 
