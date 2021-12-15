@@ -6,26 +6,26 @@
 }
 
 :root {
+    /* colors */
     --background-color: white;
     --foreground-color: black;
     --error-color: red;
+
+    /* fonts */
+    font-family: 'Cabin', sans-serif;
+    font-size: 25px;
 }
 
 body {
     min-height: 100vh;
-    font-family: 'Cabin', sans-serif;
     color: var(--foreground-color);
     background-color: var(--background-color);
-}
-
-li {
-    list-style: none;
 }
 
 /* header */
 header {
     visibility: hidden;
-    padding: 20px 40px;
+    padding: 20px; 
 }
 
 header > ul {
@@ -33,30 +33,29 @@ header > ul {
     justify-content: space-between;
 }
 
+li {
+    font-size: 1rem;
+    list-style: none;
+}
+
 /* main */
 main {
-    position: relative;
     min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 section {
-    max-width: 450px;
-    margin: 0 auto;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
+    text-align: center;
+    display: none;
 }
 
 h1 {
     font-size: 3rem;
-}
-
-#intro p {
-    margin: 20px 0 30px;
 }
 
 input {
@@ -67,17 +66,12 @@ input {
     margin: 10px;
 }
 
-/* remove counter from number input */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+@media only screen and (max-width: 750px) {
+    input {
+        padding: 10px 40px;
+        font-size: 1rem;
+        border-radius: 40px;
+    }
 }
 
 .btn:hover {
@@ -86,12 +80,29 @@ input[type=number] {
     color: var(--background-color);
 }
 
-/* game */
-
-section#game {
-    display: none;
+/* remove counter from number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
+/* intro */
+/* intro section is the first page that should be seen */
+section#intro {
+    display: flex;
+}
+
+#intro p {
+    margin: 20px 0 30px;
+}
+
+/* game */
 #question {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 20px 0;
@@ -105,22 +116,8 @@ section#game {
     text-align: center;
 }
 
-/* results */
-
-section#results {
-    display: none;
-}
-
 /* credits */
-
-section#credits {
-    display: none;
-    text-align: center;
-    position: static;
-    transform: translate(0, 0);
-}
-
-#credits > .correction {
+.correction {
     color: var(--error-color);
 }
 

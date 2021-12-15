@@ -1,59 +1,82 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Math Game</title>
 
-<head>
-    <title>Math Game</title>
+		<!-- meta -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
 
-    <!-- external fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap" rel="stylesheet">
+		<!-- external fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap"
+			rel="stylesheet"
+		/>
 
-    <!-- local stylesheets -->
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+		<!-- local stylesheets -->
+		<link rel="stylesheet" type="text/css" href="./style.css" />
 
-    <!-- local scripts -->
-    <script src="./calculation.js" type="module" defer></script>
-    <script src="./timer.js" type="module" defer></script>
-    <script src="./main.js" type="module" defer></script>
-</head>
+		<!-- local scripts -->
+		<script src="./calculation.js" type="module" defer></script>
+		<script src="./timer.js" type="module" defer></script>
+		<script src="./main.js" type="module" defer></script>
+	</head>
 
-<body>
-    <header>
-        <ul>
-            <li id="time">00:00:00</li>
-            <li><span id="correct-counter">0</span> / 20</li>
-        </ul>
-    </header>
-    <main>
-        <section id="intro">
-            <h1>quick maths</h1>
-            <p>how quickly can you answer 20 basic math questions correctly?</p>
-            <input type="button" id="start" class="btn" value="try now" />
-        </section>
-        <section id="game">
-            <p>Question <span class="question-number"></span></p>
-            <h1 id="question"></h1>
-            <input type="text" name="answer" id="answer" placeholder="Answer Here..."/>
-            <p>press enter to submit</p>
-        </section>
-        <section id="results">
-            <h1>errors</h1>
-            <p id="error-counter"></p>
-            <input type="button" value="view results" class="btn" id="view-results">
-            <br>
-            <h1>final time</h1>
-            <p id="time-stamp"></p>
-            <input type="button" class="btn redo" value="try again">
-        </section>
-        <section id="credits">
-            <input type="button" class="btn redo" value="try again">
-        </section>
-    </main>
-</body>
-
+	<body>
+		<header>
+			<ul>
+				<li id="time">00:00:00</li>
+				<li><span id="correct-counter">0</span> / 20</li>
+			</ul>
+		</header>
+		<main>
+			<section id="intro">
+				<h1>quick maths</h1>
+				<p>
+					how quickly can you answer 20 basic math questions
+					correctly?
+				</p>
+				<input type="button" id="start" class="btn" value="try now" />
+			</section>
+			<section id="game">
+				<p>Question <span class="question-number"></span></p>
+				<h1 id="question"></h1>
+				<input
+					type="text"
+					name="answer"
+					id="answer"
+					placeholder="Answer Here..."
+				/>
+				<p>press enter to submit</p>
+			</section>
+			<section id="results">
+				<h1>errors</h1>
+				<p id="error-counter"></p>
+				<input
+					type="button"
+					value="view results"
+					class="btn"
+					id="view-results"
+				/>
+				<br />
+				<h1>final time</h1>
+				<p id="time-stamp"></p>
+				<input type="button" class="btn redo" value="try again" />
+			</section>
+			<section id="credits">
+				<input type="button" class="btn redo" value="try again" />
+			</section>
+		</main>
+	</body>
 </html>
