@@ -187,13 +187,7 @@ function removeCredits() {
 function checkAnswer() {
 	if (answer.value) {
 		for (let char of answer.value) {
-			if (
-				char
-					.toLowerCase()
-					.includes(
-						"abcdefghijklmnopqrstuvwxyz!@#$%^&*()_=~`{}[]\"';:><,"
-					)
-			) {
+            if ("abcdefghijklmnopqrstuvwxyz!@#$.%^&*()_=~`{}[]\"';:><,".includes(char.toLowerCase())) {
 				return false;
 			}
 		}
