@@ -16,18 +16,16 @@
     <!-- local stylesheets -->
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
-    <!-- handlebars script cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
     <!-- local scripts -->
     <script src="./calculation.js" type="module" defer></script>
+    <script src="./timer.js" type="module" defer></script>
     <script src="./main.js" type="module" defer></script>
 </head>
 
 <body>
     <header>
         <ul>
-            <li id="time">00:00</li>
+            <li id="time">00:00:00</li>
             <li><span id="correct-counter">0</span> / 20</li>
         </ul>
     </header>
@@ -37,24 +35,22 @@
             <p>how quickly can you answer 20 basic math questions correctly?</p>
             <input type="button" id="start" class="btn" value="try now" />
         </section>
-
         <section id="game">
             <p>Question <span class="question-number"></span></p>
             <h1 id="question"></h1>
-            <input type="number" name="answer" id="answer" placeholder="Answer Here..." autofocus/>
+            <input type="number" name="answer" id="answer" placeholder="Answer Here..."/>
             <p>press enter to submit</p>
         </section>
         <section id="results">
             <h1>errors</h1>
-            <p id="error-counter">5</p>
+            <p id="error-counter"></p>
             <input type="button" value="view results" class="btn" id="view-results">
             <br>
             <h1>final time</h1>
-            <p id="time-stamp">00:02:22</p>
+            <p id="time-stamp"></p>
             <input type="button" class="btn redo" value="try again">
         </section>
         <section id="credits">
-
             <input type="button" class="btn redo" value="try again">
         </section>
     </main>

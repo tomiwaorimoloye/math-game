@@ -6,13 +6,16 @@
 }
 
 :root {
-    --white: #fff;
-    --black: #000;
+    --background-color: white;
+    --foreground-color: black;
+    --error-color: red;
 }
 
 body {
     min-height: 100vh;
     font-family: 'Cabin', sans-serif;
+    color: var(--foreground-color);
+    background-color: var(--background-color);
 }
 
 li {
@@ -59,8 +62,8 @@ h1 {
 }
 
 input {
-    border: 2px solid var(--black);
-    background-color: var(--white);
+    border: 2px solid var(--foreground-color);
+    background-color: var(--background-color);
     padding: 5px 20px;
     border-radius: 20px;
     margin: 10px;
@@ -81,8 +84,8 @@ input[type=number] {
 
 .btn:hover {
     cursor: pointer;
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--foreground-color);
+    color: var(--background-color);
 }
 
 /* game */
@@ -120,7 +123,7 @@ section#credits {
 }
 
 #credits > .correction {
-    color: red;
+    color: var(--error-color);
 }
 
 #credits > div {
