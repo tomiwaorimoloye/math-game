@@ -46,7 +46,7 @@ let userAnswers = [];
 
 // make sure the user makes an input before proceeding to next question
 document.body.addEventListener("keydown", function (e) {
-	if (e.key == "Enter" && answer.value) {
+	if (e.key == "Enter" && checkAnswer()) {
 		if (compareAnswers() < 20) {
 			// store user's answers
 			userAnswers.push(Number(answer.value));
@@ -69,8 +69,8 @@ function getQuestion() {
 	// clear the input field
 	answer.value = "";
 
-    // autofocus on the input field
-    answer.focus()
+	// autofocus on the input field
+	answer.focus();
 
 	let questionArray = calc();
 	let questionString =
@@ -103,7 +103,7 @@ function updateQuestionNumber() {
 function showResults() {
 	gamePage.style.display = "none";
 	resultsPage.style.display = "flex";
-    header.style.visibility = 'hidden';
+	header.style.visibility = "hidden";
 
 	// show user amount of errors
 	errorCounter.innerHTML = userAnswers.length - compareAnswers();
@@ -134,8 +134,8 @@ function reset() {
 	creditPage.style.display = "none";
 	gamePage.style.display = "flex";
 
-    // start timer
-    startTimer()
+	// start timer
+	startTimer();
 }
 
 function addCredit(arr, index, correct) {
@@ -182,4 +182,22 @@ function removeCredits() {
 			// delete the div
 			divs[i].remove();
 	}
+}
+
+function checkAnswer() {
+	if (answer.value) {
+		for (let char of answer.value) {
+			if (
+				char
+					.toLowerCase()
+					.includes(
+						"abcdefghijklmnopqrstuvwxyz!@#$%^&*()_=~`{}[]\"';:><,"
+					)
+			) {
+				return false;
+			}
+		}
+		return true;
+	}
+	return false;
 }
