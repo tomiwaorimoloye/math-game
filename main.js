@@ -167,11 +167,11 @@ function addCredit(userAnswer, index, correct) {
 
 function removeCredits() {
 	let divs = document.querySelectorAll("#credits > div");
-	for (let i = 0; i < divs.length; i++) {
+	for (let div of divs) {
 		// make sure you don't delete the retry button UI
-		if (divs[i].nodeName.toLowerCase() === "div")
+		if (div.nodeName.toLowerCase() === "div")
 			// delete the div
-			divs[i].remove();
+			div.remove();
 	}
 }
 

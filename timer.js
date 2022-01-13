@@ -36,15 +36,8 @@ function createTimeString(h, m, s, check = false) {
 	return `${h}:${m}:${s}`;
 }
 
-function saveTime() {
-	let timeString = timeStamp.innerHTML;
-	let timeArray = timeString.split(":");
-
-	return timeArray;
-}
-
 function endTimer() {
-	let savedTimeArray = saveTime();
+	let savedTimeArray = timeStamp.innerHTML.split(":");
 	clearInterval(interval);
 	[hours, minutes, seconds] = [0, 0, 0];
 	timeStamp.innerHTML = "00:00:00";
