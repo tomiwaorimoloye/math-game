@@ -21,6 +21,7 @@ startButton.addEventListener("click", function () {
 	getQuestion();
 });
 
+// reset game
 for (let btn of retryButton) {
 	btn.addEventListener("click", function () {
 		reset();
@@ -71,20 +72,19 @@ function getQuestion() {
 	// autofocus on the input field
 	answer.focus();
 
-	let questionArray = calc();
-	let questionString =
-		questionArray[0] + " " + questionArray[2] + " " + questionArray[1];
+	let question = calc();
+	let questionString = `${question.firstNumber} ${question.sign} ${question.secondNumber}`;
 	questionDOM.innerHTML = questionString;
 
 	// add the real answer to the list of correct answers
-	actualAnswers.push(questionArray);
+	actualAnswers.push(question);
 	updateQuestionNumber();
 }
 
 function compareAnswers() {
 	let counter = 0;
 	for (let i = 0; i < userAnswers.length; i++) {
-		if (userAnswers[i] === actualAnswers[i][3]) counter++;
+		if (userAnswers[i] === actualAnswers[i].answer) counter++;
 	}
 
 	return counter;
@@ -110,7 +110,7 @@ function showResults() {
 function showCredits() {
 	// create all credits for each question
 	for (let i = 0; i < actualAnswers.length; i++) {
-		if (userAnswers[i] == actualAnswers[i][3]) {
+		if (userAnswers[i] == actualAnswers[i].answer) {
 			addCredit(userAnswers[i], i, true);
 		} else addCredit(userAnswers[i], i, false);
 	}
@@ -148,17 +148,17 @@ function addCredit(arr, index, correct) {
 
 	const equation = document.createElement("p");
 	equation.innerHTML =
-		reference[0] +
+		reference.firstNumber +
 		" " +
-		reference[2] +
+		reference.sign +
 		" " +
-		reference[1] +
+		reference.secondNumber +
 		equalSign +
 		arr;
 
 	const correction = document.createElement("p");
 	if (!correct) {
-		correction.innerHTML = "Correct Answer: " + reference[3];
+		correction.innerHTML = "Correct Answer: " + reference.answer;
 	}
 
 	newDiv.appendChild(questionHeading);
@@ -185,7 +185,11 @@ function removeCredits() {
 function checkAnswer() {
 	if (answer.value) {
 		for (let char of answer.value) {
-            if ("abcdefghijklmnopqrstuvwxyz!@#$.%^&*()_=~`{}[]\"';:><,".includes(char.toLowerCase())) {
+			if (
+				"abcdefghijklmnopqrstuvwxyz!@#$.%^&*()_=~`{}[]\"';:><,".includes(
+					char.toLowerCase()
+				)
+			) {
 				return false;
 			}
 		}
