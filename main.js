@@ -136,9 +136,9 @@ function reset() {
 	startTimer();
 }
 
-function addCredit(arr, index, correct) {
+function addCredit(userAnswer, index, correct) {
 	let reference = actualAnswers[index];
-	let equalSign = correct ? " = " : " &#8800; ";
+	let equalSign = correct ? "=" : "&#8800;";
 
 	// create a new div element
 	const newDiv = document.createElement("div");
@@ -147,14 +147,7 @@ function addCredit(arr, index, correct) {
 	questionHeading.innerHTML = "Question " + (index + 1);
 
 	const equation = document.createElement("p");
-	equation.innerHTML =
-		reference.firstNumber +
-		" " +
-		reference.sign +
-		" " +
-		reference.secondNumber +
-		equalSign +
-		arr;
+	equation.innerHTML = `${reference.firstNumber} ${reference.sign} ${reference.secondNumber} ${equalSign} ${userAnswer}`;
 
 	const correction = document.createElement("p");
 	if (!correct) {

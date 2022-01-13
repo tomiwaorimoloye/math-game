@@ -34,7 +34,7 @@ function getAnswer(...symbols) {
 	return result;
 }
 
-function printEquation() {
+export default function printEquation() {
 	let firstNumber = createRandomNumber();
 	let secondNumber = createRandomNumber();
 	let sign = createRandomSymbol();
