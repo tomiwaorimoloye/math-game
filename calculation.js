@@ -12,9 +12,7 @@ function createRandomSymbol() {
 }
 
 function getAnswer(...symbols) {
-	let firstNumber = symbols[0];
-	let secondNumber = symbols[1];
-	let sign = symbols[2];
+	let [firstNumber, secondNumber, sign] = symbols;
 
 	let result;
 	switch (sign) {
