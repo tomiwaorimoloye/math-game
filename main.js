@@ -163,12 +163,8 @@ function removeCredits() {
 
 function validAnswer() {
 	if (answer.value) {
-		for (let char of answer.value) {
-			let digit = Number(char)
-			if (Number.isNaN(digit))
-				return false;
-		}
-		return true;
+		let number = Number(answer.value)
+		return (Number.isNaN(number) ? false : true)
 	}
 	return false;
 }
