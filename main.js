@@ -1,12 +1,14 @@
 import calc from "./calculation.js";
 import { startTimer, endTimer } from "./timer.js";
 
+// Components
 const header = document.querySelector("header");
 const introPage = document.getElementById("intro");
 const gamePage = document.getElementById("game");
 const resultsPage = document.getElementById("results");
 const creditPage = document.getElementById("credits");
 
+// Buttons
 const startButton = document.getElementById("start");
 const retryButton = document.getElementsByClassName("redo");
 const creditButton = document.getElementById("view-results");
@@ -14,20 +16,17 @@ const creditButton = document.getElementById("view-results");
 startButton.addEventListener("click", function () {
 	introPage.style.display = "none";
 	gamePage.style.display = "flex";
-	// make time & counter visible
-	header.style.visibility = "visible";
-	startTimer();
+	header.style.visibility = "visible"; // make time & counter visible
 
 	getQuestion();
+	startTimer();
 });
 
 // reset game
 for (let btn of retryButton) {
 	btn.addEventListener("click", function () {
 		reset();
-
-		// render question
-		getQuestion();
+		getQuestion(); // render question
 	});
 }
 
@@ -47,7 +46,7 @@ let userAnswers = [];
 
 // make sure the user makes an input before proceeding to next question
 document.body.addEventListener("keydown", function (e) {
-	if (e.key == "Enter" && checkAnswer()) {
+	if (e.key == "Enter" && validAnswer()) {
 		if (compareAnswers() < 20) {
 			// store user's answers
 			userAnswers.push(Number(answer.value));
@@ -66,15 +65,11 @@ document.body.addEventListener("keydown", function (e) {
 });
 
 function getQuestion() {
-	// clear the input field
-	answer.value = "";
-
-	// autofocus on the input field
-	answer.focus();
+	answer.value = ""; // clear the input field
+	answer.focus(); // autofocus on the input field
 
 	let question = calc();
-	let questionString = `${question.firstNumber} ${question.sign} ${question.secondNumber}`;
-	questionDOM.innerHTML = questionString;
+	questionDOM.innerHTML = `${question.firstNumber} ${question.sign} ${question.secondNumber}`;
 
 	// add the real answer to the list of correct answers
 	actualAnswers.push(question);
@@ -92,10 +87,8 @@ function compareAnswers() {
 
 function updateQuestionNumber() {
 	let number = actualAnswers.length;
-	let positions = document.querySelectorAll(".question-number");
-	positions.forEach((pos) => {
-		pos.innerHTML = number + "";
-	});
+	let pos = document.querySelector('.question-number')
+	pos.textContent = number + '';
 }
 
 function showResults() {
@@ -149,15 +142,12 @@ function addCredit(userAnswer, index, correct) {
 	const equation = document.createElement("p");
 	equation.innerHTML = `${reference.firstNumber} ${reference.sign} ${reference.secondNumber} ${equalSign} ${userAnswer}`;
 
-	const correction = document.createElement("p");
-	if (!correct) {
-		correction.innerHTML = "Correct Answer: " + reference.answer;
-	}
-
 	newDiv.appendChild(questionHeading);
 	newDiv.appendChild(equation);
 
 	if (!correct) {
+		const correction = document.createElement("p");
+		correction.innerHTML = "Correct Answer: " + reference.answer;
 		newDiv.appendChild(correction);
 		newDiv.classList.add("correction");
 	}
@@ -167,24 +157,16 @@ function addCredit(userAnswer, index, correct) {
 
 function removeCredits() {
 	let divs = document.querySelectorAll("#credits > div");
-	for (let div of divs) {
-		// make sure you don't delete the retry button UI
-		if (div.nodeName.toLowerCase() === "div")
-			// delete the div
-			div.remove();
-	}
+	for (let div of divs)
+		div.remove(); // delete artificial divs
 }
 
-function checkAnswer() {
+function validAnswer() {
 	if (answer.value) {
 		for (let char of answer.value) {
-			if (
-				"abcdefghijklmnopqrstuvwxyz!@#$.%^&*()_=~`{}[]\"';:><,".includes(
-					char.toLowerCase()
-				)
-			) {
+			let digit = Number(char)
+			if (Number.isNaN(digit))
 				return false;
-			}
 		}
 		return true;
 	}
